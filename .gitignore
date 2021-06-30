@@ -1,0 +1,12 @@
+bin/
+lib/
+libhtts/build/
+tts/build/
+txt/
+wav/
+.project
+.cproject
+.settings/
+*~
+.build
+.travis
