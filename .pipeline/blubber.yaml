@@ -1,0 +1,28 @@
+version: v4
+
+base: docker-registry.wikimedia.org/wikimedia-buster
+
+runs:
+  insecurely: true
+
+lives:
+  in: /srv
+
+variants:
+  build:
+    apt:
+      packages: [ gcc, build-essential, cmake, python2.7, ca-certificates, python-setuptools ]
+    python:
+      version: python2.7
+      requirements: [ requirements.txt ]
+    builder:
+      command: [ ./blubber-prepare.sh ]
+      requirements: [ . ]
+  production:
+    includes: [ build ]
+    entrypoint: [ "./ahotts/blubber-entrypoint.sh" ]
+  test:
+    includes: [ build ]
+    apt:
+      packages: [ wget ]
+    entrypoint: [ "./ahotts/blubber-entrypoint-test.sh" ]

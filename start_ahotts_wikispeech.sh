@@ -5,7 +5,8 @@ set -e
 mkdir -p txt wav
 
 #host=`hostname -I | sed 's/ .*//'`
-host="127.0.0.1"
+#host="127.0.0.1"
+host="0.0.0.0"
 
 python2 ahotts-httpserver.py $host 1200 1201 &
 status=$?
